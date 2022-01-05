@@ -24,7 +24,7 @@
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>Lori Lynch</td>
+                                <td>Anime</td>
                                 <td><a class="btn btn-warning" href="#"><i class="far fa-edit"></i></a>
                                     <form action="#" method="post" class="d-inline">
                                         @csrf
