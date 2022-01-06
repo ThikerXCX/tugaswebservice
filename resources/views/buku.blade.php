@@ -1,11 +1,9 @@
 <x-main title="buku">
-    <div class="container mt-2 mb-2">
-        <div class="content-header">
-            <div class="container">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Kategori</h1>
-                    </div>
+    <div class="content-header">
+        <div class="container">
+            <div class="row mb-2">
+                <div class="text-center">
+                    <h1 class="">Buku</h1>
                 </div>
             </div>
         </div>
@@ -13,7 +11,6 @@
     <div class="container">
         <a href="#" class="btn btn-primary mb-2">Tambah Berita</a>
         <div class="row">
-            
                 <div class="table-responsive table-responsive-data2">
                     <table class="table table-striped table-bordered" id="example">
                         <thead>
@@ -49,5 +46,11 @@
             </div>
         </div>
     </div>
-
+    @slot('js')
+        <script>
+            $(document).ready(function() {
+                $('#example').DataTable();
+            } );    
+        </script>
+    @endslot
 </x-main>

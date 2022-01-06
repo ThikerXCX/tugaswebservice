@@ -18,5 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('categori',[CategoryController::class,'create'])->name('cat.create');
+Route::get('categori',[CategoryController::class,'index'])->name('cat.index');
+Route::post('categori',[CategoryController::class,'store'])->name('cat.store');
 Route::get('buku',[BookController::class,'create'])->name('book.create');

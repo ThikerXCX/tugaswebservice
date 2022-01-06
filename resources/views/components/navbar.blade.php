@@ -12,7 +12,7 @@
                         Master
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{{ route('cat.create') }}">Kategori</a></li>
+                        <li><a class="dropdown-item" href="{{ route('cat.index') }}">Kategori</a></li>
                         <li><a class="dropdown-item" href="/buku">Buku</a></li>
                     </ul>
                 </li>
