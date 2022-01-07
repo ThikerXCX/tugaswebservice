@@ -20,4 +20,5 @@ Route::get('/', function () {
 });
 Route::get('categori',[CategoryController::class,'index'])->name('cat.index');
 Route::post('categori',[CategoryController::class,'store'])->name('cat.store');
+Route::get('categori/{category:id}',[CategoryController::class,'show'])->name('cat.show');
 Route::get('buku',[BookController::class,'create'])->name('book.create');
