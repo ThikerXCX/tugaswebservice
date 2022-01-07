@@ -80,9 +80,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="" method="POST">
+                <form action="{{ route('cat.edit') }}" method="POST">
                     @csrf
                     @method('put')
+                    <div class="mb-3">
+                        <input type="hidden" class="form-control" id="editid" name="id">
+                    </div>
                     <div class="mb-3">
                         <label for="editinput" class="form-label">Nama Kategori</label>
                         <input type="text" class="form-control" id="editinput" name="name">
@@ -108,10 +111,12 @@
                     method : 'get',
                     url : "/categori/" + x,
                 }).done(function(data){
-                    alert(data.id);
-//                    $("#editinput").val(data.name);
+                    $("#editid").val(data.cat.id);
+                    $("#editinput").val(data.cat.name);
                 });
             });
+
+
         </script>
     @endslot
 </x-main>
