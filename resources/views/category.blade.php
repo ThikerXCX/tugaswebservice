@@ -34,7 +34,7 @@
                                     <td>{{ $i->name }}</td>
                                     <td>
                                         <button class="btn btn-warning edit" data-bs-toggle="modal" data-bs-target="#editmodal" id="edit" value="{{ $i->id }}"><i class="far fa-edit"></i></button>
-                                        <form action="#" method="post" class="d-inline">
+                                        <form action="{{ route('cat.delete',[$i->id]) }}" method="post" class="d-inline">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash nav-icon"></i></button>
