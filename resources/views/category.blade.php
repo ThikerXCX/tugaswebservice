@@ -72,19 +72,20 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="editmsodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="" method="POST">
                     @csrf
+                    @method('put')
                     <div class="mb-3">
-                        <label for="name" class="form-label">Nama Kategori</label>
-                        <input type="text" class="form-control" id="name" name="name">
+                        <label for="editinput" class="form-label">Nama Kategori</label>
+                        <input type="text" class="form-control" id="editinput" name="name">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -99,14 +100,16 @@
         <script>
             $(document).ready(function() {
                 $('#example').DataTable();
-            } );
-            $('.edit').on('click',function(e){
+            });
+
+            $('.edit').on('click',function(){
                 var x = $(this).val();
                 $.ajax({
                     method : 'get',
                     url : "/categori/" + x,
                 }).done(function(data){
-                    alert(data.cat.id);
+                    alert(data.id);
+//                    $("#editinput").val(data.name);
                 });
             });
         </script>
