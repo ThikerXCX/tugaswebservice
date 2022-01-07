@@ -71,8 +71,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request)
     {
-        $attr = $request->validate([
-            'name' => ['required']
+        $request->validate([
+            'name' => ['required'],
         ]);
         DB::table('categories')->where('id',$request->id)->update(['name' => $request->name]);
         return redirect('/categori')->with('success','data berhasil diupdate');
