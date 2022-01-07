@@ -33,7 +33,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $i->name }}</td>
                                     <td>
-                                        <button class="btn btn-warning" id="edit" value="{{ $i->id }}"><i class="far fa-edit"></i></button>
+                                        <button class="btn btn-warning edit" id="edit" value="{{ $i->id }}"><i class="far fa-edit"></i></button>
                                         <form action="#" method="post" class="d-inline">
                                             @csrf
                                             @method('delete')
@@ -77,11 +77,13 @@
             $(document).ready(function() {
                 $('#example').DataTable();
             } );
-            $('#edit').on('click',function(e){
-                const x = document.getElementById("edit").value;
+            $('.edit').on('click',function(e){
+                const x = document.getElementsByClassName("edit").value;
                 $.ajax({
                     method : 'get',
                     url : "/categori/" + x,
+                }).done(function(data){
+                    alert(data.cat.id);
                 });
             });
         </script>
