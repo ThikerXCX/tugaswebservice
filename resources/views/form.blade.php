@@ -7,11 +7,11 @@
                         Form Tambah
                     </div>
                     <div class="card-body">
-                        <form action="" enctype="multipart/form-data" method="POST">
+                        <form action="{{ route('book.store') }}" enctype="multipart/form-data" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="Judul" class="form-label">Judul Buku</label>
-                                <input type="text" class="form-control" id="Judul" value="{{ old('judul') }}" placeholder="">
+                                <input type="text" class="form-control" id="judul" name="judul"value="{{ old('judul') }}" placeholder="">
                                 @error('judul')
                                     <div class="text-danger mt-2">
                                         {{ $message }}
@@ -20,12 +20,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="slug" class="form-label">Slug Buku</label>
-                                <input type="text" class="form-control" id="slug" value="{{ old('slug') }}" placeholder="">
-                                @error('slug')
-                                    <div class="text-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                                <input type="text" readonly class="form-control" id="slug" value="{{ old('slug') }}" placeholder="">
                             </div>
                             <div class="mb-3">
                                 <label for="category_id">Kategori</label>
@@ -42,7 +37,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="penulis" class="form-label">penulis Buku</label>
-                                <input type="text" class="form-control" id="penulis" value="{{ old('penulis') }}" placeholder="">
+                                <input type="text" class="form-control" id="penulis" name="penulis" value="{{ old('penulis') }}" placeholder="">
                                 @error('penulis')
                                     <div class="text-danger mt-2">
                                         {{ $message }}
@@ -51,7 +46,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="penerbit" class="form-label">penerbit Buku</label>
-                                <input type="text" class="form-control" id="penerbit" value="{{ old('penerbit') }}" placeholder="">
+                                <input type="text" class="form-control" id="penerbit" name="penerbit" value="{{ old('penerbit') }}" placeholder="">
                                 @error('penerbit')
                                     <div class="text-danger mt-2">
                                         {{ $message }}
@@ -61,16 +56,23 @@
                             <div class="mb-3">
                                 <label for="sampul" class="form-label">Gambar Buku</label>
                                 <input class="form-control" type="file" id="sampul" name="sampul">
-                                @error('sampul')
-                                <div class="text-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                            @enderror
                             </div>
+                            <button type="submit" class="btn btn-success">Tambah</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @slot('js')
+        <script>
+            $('#judul').on('change',function(e){
+                $.get("{{ route('book.check') }}",
+                {'judul': $(this).val()},
+                function(data){
+                    $('#slug').val(data.slug);
+                });
+            });
+    </script>
+    @endslot
 </x-main>

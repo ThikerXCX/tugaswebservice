@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookRequest;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 use App\Models\Buku;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -21,5 +23,14 @@ class BookController extends Controller
     {
         $category = Category::all();
         return view('form',compact('category'));
+    }
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Buku::class,'slug',$request->judul);
+        return response()->json(['slug'=>$slug]);
+    }
+    public function store(BookRequest $request)
+    {
+        echo 'as';
     }
 }
