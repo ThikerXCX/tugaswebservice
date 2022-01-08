@@ -89,7 +89,11 @@
                     <div class="mb-3">
                         <label for="editinput" class="form-label">Nama Kategori</label>
                         <input type="text" class="form-control" id="editinput" name="name">
-                        </div>
+                        @error('name')
+                    <div class="text-danger mt-2">
+                        {{ $message }}
+                    </div>
+                    @enderror
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -115,8 +119,6 @@
                     $("#editinput").val(data.cat.name);
                 });
             });
-
-
         </script>
     @endslot
 </x-main>
