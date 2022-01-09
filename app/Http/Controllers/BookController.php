@@ -31,6 +31,27 @@ class BookController extends Controller
     }
     public function store(BookRequest $request)
     {
-        echo 'as';
+        $attr = $request->all();
+        if($request->file('sampul')){
+            $attr['sampul'] = $request->file('sampul')->store('img');
+        }
+        Buku::create($attr);
+        return redirect('/buku')->with('success','data berhasil dimasukan');
+    }
+    public function edit(Buku $buku)
+    {
+        
+        return view('edit',[
+            'buku' => $buku,
+            'category' => Category::all(),
+        ]);
+    }
+    public function update(Request $request,Buku $buku)
+    {   
+        $attr = $request->all();
+        if($request->sampul == null){
+            $attr['sampul'] = $request->oldsampul;
+        }
+        dd($attr);
     }
 }

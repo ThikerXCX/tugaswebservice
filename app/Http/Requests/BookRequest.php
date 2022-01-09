@@ -27,6 +27,7 @@ class BookRequest extends FormRequest
             'judul' => ['required'],
             'penulis' => ['required'],
             'penerbit' => ['required'],
+            'sampul' => ['image'],
         ];
     }
 }

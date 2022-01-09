@@ -33,7 +33,7 @@
                                 <td>{{ $i->penulis }}</td>
                                 <td>{{ $i->penerbit }}</td> 
                                 <td><button class="btn btn-success sampul" value="{{ $i->slug }}" ><i class="far fa-eye"></i></button></td>
-                                <td><a class="btn btn-warning" href="#"><i class="far fa-edit"></i></a>
+                                <td><a class="btn btn-warning" href="/buku/edit/{{ $i->slug }}"><i class="far fa-edit"></i></a>
                                     <form action="#" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
@@ -77,7 +77,7 @@
                         method : 'get',
                         url : "/buku/" + x,
                     }).done(function(data){
-                        document.getElementById('imgmodal').src=`/img/`+data.buku.sampul;
+                        document.getElementById('imgmodal').src=`/storage/`+data.buku.sampul;
                         $('#viewmodal').modal("show");
                     });
                 });
