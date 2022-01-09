@@ -13,4 +13,8 @@ class HomeController extends Controller
             'buku' => Buku::all()
         ]);
     }
+    public function show(Buku $buku)
+    {
+        return response()->json(['buku'=>$buku,'cat'=>$buku->category->name]);
+    }
 }
