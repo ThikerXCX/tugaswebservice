@@ -11,7 +11,6 @@
                 </div>
             </div>
         </div>
-        
         <div class="row row-cols-1 row-cols-md-3 g-4">
             @foreach($buku as $k)
             <div class="col">
@@ -19,12 +18,11 @@
                     <img src="/storage/{{ $k->sampul }}" class="card-img-center img-responsive" alt="...">
                     <div class="card-body">
                     </div>
-                    <div class="card-footer"><h5>{{  $k->judul  }}</h5></div>
+                    <div class="card-footer text-center"><h5>{{  $k->judul  }}</h5></div>
                 </div>
             </div>
             @endforeach
         </div>
-        
     </section>
 </div>
 </x-main>
