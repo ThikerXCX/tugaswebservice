@@ -9,6 +9,7 @@
                     <div class="card-body">
                         <form action="/buku/edit/{{ $buku->slug }}" enctype="multipart/form-data" method="POST">
                             @csrf
+                            @method('put')
                             <div class="mb-3">
                                 <label for="Judul" class="form-label">Judul Buku</label>
                                 <input type="text" class="form-control" id="judul" name="judul"value="{{ $buku->judul ?? old('judul') }}">
@@ -56,7 +57,7 @@
                             <div class="mb-3">
                                 <label for="sampul" class="form-label">Gambar Buku</label>
                                 <input type="hidden" name="oldsampul" id="oldsampul" value="{{ $buku->sampul }}">
-                                <img src="/storage/{{ $buku->sampul}}" class="img-preview img-fluid mb-3 col-sm-5 d-block" alt="" >
+                                <img src="/storage/{{ $buku->sampul?? ''}}" class="img-preview img-fluid mb-3 col-sm-5 d-block" alt="" >
                                 <input class="form-control" type="file" id="sampul" name="sampul" onchange="previewImage()">
                                 @error('sampul')
                                     <div class="text-danger mt-2">

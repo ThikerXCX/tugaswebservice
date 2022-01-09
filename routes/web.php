@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class,'index']);
 Route::get('categori',[CategoryController::class,'index'])->name('cat.index');
 Route::post('categori',[CategoryController::class,'store'])->name('cat.store');
 Route::get('categori/{category:id}',[CategoryController::class,'show'])->name('cat.show');
@@ -32,4 +31,5 @@ Route::get('/buku/create/check',[BookController::class,'checkSlug'])->name('book
 
 Route::get('buku/{buku:slug}',[BookController::class,'viewSampul']);
 Route::get('/buku/edit/{buku:slug}',[BookController::class,'edit'])->name('book.edit');
-Route::post('/buku/edit/{buku:slug}',[BookController::class,'update'])->name('book.edit');
+Route::put('/buku/edit/{buku:slug}',[BookController::class,'update'])->name('book.edit');
+Route::delete('/buku/delete/{buku:slug}',[BookController::class,'destroy'])->name('book.del');

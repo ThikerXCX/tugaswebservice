@@ -9,6 +9,11 @@
         </div>
     </div> 
     <div class="container">
+        @if(session()->has('success'))
+        <div class="alert alert-success mb-5" role="alert">
+            {{ session()->get('success')  }}
+        </div>
+    @endif
         <a href="{{ route('book.create') }}" class="btn btn-primary mb-2">Tambah Berita</a>
         <div class="row">
                 <div class="table-responsive table-responsive-data2">
@@ -34,7 +39,7 @@
                                 <td>{{ $i->penerbit }}</td> 
                                 <td><button class="btn btn-success sampul" value="{{ $i->slug }}" ><i class="far fa-eye"></i></button></td>
                                 <td><a class="btn btn-warning" href="/buku/edit/{{ $i->slug }}"><i class="far fa-edit"></i></a>
-                                    <form action="#" method="post" class="d-inline">
+                                    <form action="/buku/delete/{{ $i->slug }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger"><i class="fas fa-trash nav-icon"></i></button>
