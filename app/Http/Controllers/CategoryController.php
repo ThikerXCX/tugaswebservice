@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -74,7 +73,7 @@ class CategoryController extends Controller
         $request->validate([
             'name' => ['required'],
         ]);
-        DB::table('categories')->where('id',$request->id)->update(['name' => $request->name]);
+        Category::where('id',$request->id)->update(['name' => $request->name]);
         return redirect('/categori')->with('success','data berhasil diupdate');
 
     }
@@ -87,7 +86,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('categories')->where('id',$id)->delete();
+        Category::where('id',$id)->delete();
         return redirect('/categori')->with('success','data berhasil dihapus');
     }
 }
