@@ -22,15 +22,11 @@ Route::get('/', [HomeController::class,'index']);
 Route::get('/home/{buku:slug}', [HomeController::class,'show']);
 
 Route::middleware('guest')->group(function(){
-    
-
     Route::get('login', [LoginController::class, 'create'])->name('login')->middleware('guest');
     Route::post('login', [LoginController::class, 'store']);
-
     Route::get('register', [RegistrationController::class, 'create'])->name('register');//bisa menggunakan->middleware('guest') setelah nama
     Route::post('register', [RegistrationController::class, 'store']); // bisa tetap pake route karena pad form menggunakan method post
 });
-
 
 Route::middleware('auth')->group(function(){
     Route::get('categori',[CategoryController::class,'index'])->name('cat.index');

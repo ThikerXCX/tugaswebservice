@@ -76,7 +76,6 @@ class CategoryController extends Controller
         ]);
         DB::table('categories')->where('id',$request->id)->update(['name' => $request->name]);
         return redirect('/categori')->with('success','data berhasil diupdate');
-
     }
 
     /**
